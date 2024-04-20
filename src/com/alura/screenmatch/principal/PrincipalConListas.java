@@ -18,8 +18,8 @@ public class PrincipalConListas {
         peliculaDeJoel.evalua(7.5);
         Serie Scorpion = new Serie("SCORPION", 2005);
 
-//      Se utiliza la  interfaz "List" para añadirle mayor abstracción y referenciar LA INTERFAZ LIST
-//      a nuestra instancia, y así poder utilizar los diferentes métodos que tiene nuestra interfaz
+//      Se utiliza la  interfaz "List"   y referenciar LA INTERFAZ LIST
+//      a nuestra clase, y así poder utilizar los diferentes métodos que tiene nuestra interfaz
         List<Titulo> lista = new LinkedList<>();
         lista.add(miPelicula);
         lista.add(otraPelicula);
