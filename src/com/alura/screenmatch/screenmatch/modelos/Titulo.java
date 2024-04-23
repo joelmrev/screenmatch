@@ -1,8 +1,13 @@
 package com.alura.screenmatch.screenmatch.modelos;
 
-public class Titulo implements Comparable<Titulo>{
-    private String nombre;
+import com.google.gson.annotations.SerializedName;
 
+public class Titulo implements Comparable<Titulo>{
+    //Aviso a nuestro programa, para que convierta los datos de @SerializedName("")a variables
+    // de nuestro programa
+    @SerializedName("Title")
+    private String nombre;
+    @SerializedName("Year")
     private int fechaLanzamiento;
 
     private int duracionEnMinutos;
@@ -16,6 +21,12 @@ public class Titulo implements Comparable<Titulo>{
     public Titulo(String nombre, int fechaLanzamiento) {
         this.nombre = nombre;
         this.fechaLanzamiento = fechaLanzamiento;
+    }
+
+    public Titulo(TituloOmdb miTituloOmdb) {
+        this.nombre = miTituloOmdb.title();
+        this.fechaLanzamiento = Integer.valueOf(miTituloOmdb.year());
+        this.duracionEnMinutos = Integer.valueOf(miTituloOmdb.runtime().substring(0,2));
     }
 
     //-------------------------    GETTERS  ----------------------------------------//
@@ -80,5 +91,14 @@ public class Titulo implements Comparable<Titulo>{
     @Override
     public int compareTo(Titulo otroTitulo) {
         return this.getNombre().compareTo(otroTitulo.getNombre());
+    }
+
+    //Modificación de toString() para que al imprimir nuestros datos desde "PrincipalConBusqueda"
+    //nos aparece de acuerdo a este String
+    @Override
+    public String toString() {
+        return  "Nombre: '" + nombre + '\'' +
+                ", FechaLanzamiento: " + fechaLanzamiento + ",   " +
+                "Duración: " + duracionEnMinutos;
     }
 }
